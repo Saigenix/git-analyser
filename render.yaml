@@ -35,4 +35,5 @@ services:
     type: redis
     plan: free
     ipAllowList:
-      - 0.0.0.0/0
+      - source: 0.0.0.0/0
+      description: everywhere
