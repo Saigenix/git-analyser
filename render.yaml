@@ -36,4 +36,4 @@ services:
     plan: free
     ipAllowList:
       - source: 0.0.0.0/0
-      description: everywhere
+        description: everywhere
