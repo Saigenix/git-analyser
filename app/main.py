@@ -1,8 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from celery.result import AsyncResult
 from pydantic import BaseModel
-
-# from app.tasks import analyze_pr_task
+from app.tasks.app import analyze_pr_task
 import uuid
 
 
@@ -20,9 +19,9 @@ class AnalyzeRequest(BaseModel):
 async def analyze_pr(request: AnalyzeRequest):
     # print(request.repo, request.pr_number)
     task_id = str(uuid.uuid4())
-    # task = analyze_pr_task.apply_async(
-    #     args=[request.repo, request.pr_number], task_id=task_id
-    # )
+    task = analyze_pr_task.apply_async(
+        args=[request.repo, request.pr_number], task_id=task_id
+    )
     return {"task_id": task_id, "status": "submitted"}
 
 
