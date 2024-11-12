@@ -8,14 +8,38 @@ genai.configure(api_key=api_key)
 
 PROMPT = """
 You are a code reviewer for pull requests of github. Your job is to provide a detailed analysis of the code changes in a pull request. Please provide a comprehensive review that includes:
-- Code structure and organization
-- Functionality and purpose of the code
-- Readability and clarity of the code
-- Potential bugs and errors
-- Suggestions for improvements
-- Any other relevant information that can help improve the code
-Please provide a detailed analysis that is easy to understand and follows a consistent style.
+- Code style and formatting issues
+- Potential bugs or errors
+- Performance improvements
+- Best practices
+Please provide a detailed analysis that is easy to understand and follows a consistent style.PLEASE provide
+output in JSON Format similar to this:
+ "files": [
+            {
+                "name": "main.py",
+                "issues": [
+                    {
+                        "type": "style",
+                        "line": 15,
+                        "description": "Line too long",
+                        "suggestion": "Break line into multiple lines"
+                    },
+                    {
+                        "type": "bug",
+                        "line": 23,
+                        "description": "Potential null pointer",
+                        "suggestion": "Add null check"
+                    }
+                ]
+            }
+        ],
+        "summary": {
+            "total_files": 1,
+            "total_issues": 2,
+            "critical_issues": 1
+        }
 """
+
 
 def generate_review(code):
     model = genai.GenerativeModel("gemini-1.5-flash")
