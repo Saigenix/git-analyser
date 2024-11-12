@@ -8,7 +8,7 @@ celery_app = Celery(
 
 @celery_app.task(bind=True)
 def analyze_pr_task(self, repo: str, pr_number: int):
-    print("async task is running")
+    print("async task is running...")
     get_code_review = get_code(repo, pr_number)
     return {
         "repo": repo,
