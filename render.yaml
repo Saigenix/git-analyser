@@ -12,7 +12,7 @@ services:
     # ports:
     #   - port: 8000
     buildCommand: docker build -t fastapi-app .
-    startCommand: uvicorn app.main:app --host 0.0.0.0 --port 8000
+    # startCommand: uvicorn app.main:app --host 0.0.0.0 --port 8000
     # dependsOn:
     #   - redis
 
@@ -27,10 +27,12 @@ services:
       - key: CELERY_RESULT_BACKEND
         value: redis://redis:6379/0
     buildCommand: docker build -t celery-worker .
-    startCommand: celery -A app.tasks worker --loglevel=info
+    # startCommand: celery -A app.tasks worker --loglevel=info
     # dependsOn:
     #   - redis
 
   - name: redis
     type: redis
     plan: free
+    ipAllowList:
+      - 0.0.0.0/0
