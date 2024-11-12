@@ -1,8 +1,12 @@
 from celery import Celery
 from app.AI.miner import get_code
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 # Configure Celery
 celery_app = Celery(
-    "tasks", broker="redis://localhost:6379/0", backend="redis://localhost:6379/1"
+    "tasks", broker=os.getenv("CELERY_BROKER_URL"), backend=os.getenv("CELERY_RESULT_BACKEND")
 )
 
 
