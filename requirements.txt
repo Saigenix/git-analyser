@@ -4,4 +4,4 @@ celery
 redis
 psycopg2-binary
 google-generativeai
-dotenv
+python-dotenv
