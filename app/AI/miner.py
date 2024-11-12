@@ -1,12 +1,9 @@
-
-async def get_code(repo: str, pr_number: int):
-    # Simulate AI logic
+from app.AI.model import generate_review
+def get_code(repo: str, pr_number: int):
+    # fetch the from repo
+    # analyze code
+    # return analysis results
+    review = generate_review("print('hello world')")
     return {
-        "repo": repo,
-        "pr_number": pr_number,
-        "issues": ["Style issue in line 3", "Possible bug in function calculateSum"],
-        "improvements": [
-            "Consider refactoring for performance in function processData"
-        ],
-        "best_practices": ["Follow PEP8 guidelines"],
+        "res": review,
     }
