@@ -18,5 +18,5 @@ celery_app = Celery(
 def analyze_pr_task(self, repo: str, pr_number: int):
     print("async task is running...")
     agent = create_code_review_agent()
-    result = agent.invoke(input={})
+    result = agent.invoke(input={"repo": repo, "pr_number": pr_number, "github_token": ""})
     return result

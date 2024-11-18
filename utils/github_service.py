@@ -16,14 +16,14 @@ def fetch_files(repo: str, pr_number: int, github_token: str) -> dict:
     repo_owner, repo_name = extract_owner_repo(repo)
     # if github_token != "":
     #     headers = {"Authorization": f"Bearer {github_token}"}
+    print("fetching files...")
     files_content = {}
     github_api_url = (
         f"https://api.github.com/repos/{repo_owner}/{repo_name}/pulls/{pr_number}/files"
     )
-
     try:
         response = requests.get(github_api_url)
-
+        print("json", response.json())
         if response.status_code == 200:
             pr_files = response.json()
 
@@ -48,6 +48,7 @@ def fetch_file_diff(repo: str, pr_number: int, github_token: str) -> dict:
     repo_owner, repo_name = extract_owner_repo(repo)
     # if github_token != "":
     #     headers = {"Authorization": f"Bearer {github_token}"}
+    print("fetching files diff...")
     files_diff = {}
     github_api_url = (
         f"https://api.github.com/repos/{repo_owner}/{repo_name}/pulls/{pr_number}/files"

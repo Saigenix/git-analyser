@@ -1,7 +1,7 @@
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain.tools import BaseTool, StructuredTool, tool
-from langchain_google_genai import GoogleGenerativeAI
-from prompts import review_prompt
+from langchain_google_genai import ChatGoogleGenerativeAI
+from AI.prompts import review_prompt
 from utils.github_service import fetch_files, fetch_file_diff
 from langgraph.prebuilt import create_react_agent
 from dotenv import load_dotenv
@@ -12,7 +12,7 @@ api_key = os.getenv("API_KEY")
 
 
 def create_code_review_agent():
-    llm = GoogleGenerativeAI(model="gemini-1.5-flash", google_api_key=api_key)
+    llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", google_api_key=api_key)
 
     tools = [
         StructuredTool.from_function(
