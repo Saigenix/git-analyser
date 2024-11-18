@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from celery.result import AsyncResult
 from pydantic import BaseModel
 from workers.tasks import analyze_pr_task
+from utils.json_parser import parse_json
 import uuid
 from celery.result import AsyncResult
 
@@ -47,6 +48,7 @@ async def get_results(task_id: str):
     task_result = AsyncResult(task_id)
     if task_result.state != "SUCCESS":
         raise HTTPException(status_code=404, detail="Results not available")
+    task_result.result.output = parse_json(task_result.result.output)
     return {"task_id": task_id, "results": task_result.result}
 
 
