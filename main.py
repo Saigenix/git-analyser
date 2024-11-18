@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from celery.result import AsyncResult
 from pydantic import BaseModel
-from app.tasks import analyze_pr_task
+from workers.tasks import analyze_pr_task
 import uuid
 from celery.result import AsyncResult
 

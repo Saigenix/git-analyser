@@ -2,6 +2,8 @@ fastapi
 uvicorn
 celery
 redis
-psycopg2-binary
+# psycopg2-binary
 google-generativeai
 python-dotenv
+langchain=0.110.3
+langchain-google-genai

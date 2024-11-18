@@ -42,7 +42,8 @@ output in JSON Format similar to this:
 
 
 def generate_review(code):
+    print("code: \n\n\n", code)
     model = genai.GenerativeModel("gemini-1.5-flash")
     response = model.generate_content(f"{PROMPT}: {code}")
     # print("review", response.text)
-    return response.text
+    return code
