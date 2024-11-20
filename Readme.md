@@ -1,7 +1,3 @@
-Here's a `README.md` file for your project. It includes instructions for running the project using Docker Compose and a simple local setup method for those who prefer not to use Docker.
-
----
-
 # Autonomous Code Review Agent
 
 This project implements an autonomous code review agent system that uses AI to analyze GitHub pull requests. It performs asynchronous code analysis using Celery, FastAPI, Redis, and a chosen AI language model (e.g., Gemini). The agent can identify code style issues, potential bugs, performance improvements, and best practices in code.
